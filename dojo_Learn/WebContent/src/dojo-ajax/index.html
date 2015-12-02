@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="claro">
+
+	<div class="container">
+		<div class="page-header">
+			dojo- AJAX
+		</div>
+		
+		<span class="badge">See console</span>
+		
+		<div class="col-md-6">
+			<form id="productForm">
+				<div class="form-group">
+					<label>Name:</label>
+					<input name="name" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Price:</label>
+					<input type="number" name="price" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Description:</label>
+					<textarea rows="5" cols="35" name="description" class="form-control"></textarea>
+				</div>
+				<button type="submit" class="btn btn-danger">Save</button>
+			</form>
+		</div>
+		
+	</div>
+
+
+	<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true, 
+			packages : [ {name:'dojo',location:'../dojo'},
+			             {name:'dijit',location:'../dijit'},
+			             {name:'app',location:'app'} 
+			             ],
+			tlmSiblingOfDojo : false,
+			selectorEngine:'lite'
+		};
+	</script>
+
+
+	<!-- DOJO AMD Loadedr -->
+	<script type="text/javascript" src="../dojo/dojo.js"></script>
+	
+	
+	<script type="text/javascript">
+	
+	require(["dojo/request",'dojo/_base/array','dojo/dom','dojo/on','dojo/dom-form'],
+			
+		function(request,arrayUtil,dom,on,domForm){
+		
+		//var url="dat.txt";
+		
+		//var url="products.xml";
+		
+		var url="products.json"
+		
+		request.get(url,{handleAs:'json'})
+		
+		.then(function(result){
+			
+			console.log(result);
+			
+			result.forEach(function(item){
+				console.log(item);
+			});
+			
+			
+		},function(error){
+			console.log(error);
+		});
+		
+		
+		on(dom.byId('productForm'),'submit',function(event){
+			console.log('subting form.');
+			
+			var formData=domForm.toObject(this);
+			
+			//console.log(formData);
+			
+			var url="products";
+			request.post(url,{data:formData})
+			.then(function(result){
+				console.log(result);
+			},function(error){
+				console.log(error);
+			})
+			
+			
+			event.preventDefault();
+			event.stopPropagation();
+			
+		});
+		
+		
+	});
+	</script>
+
+
+</body>
+</html>

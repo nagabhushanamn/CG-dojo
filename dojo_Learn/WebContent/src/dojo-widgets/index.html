@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true, 
+			packages : [ {name:'dojo',location:'../dojo'},
+			             {name:'dijit',location:'../dijit'},
+			             {name:'app',location:'app'} 
+			             ],
+			tlmSiblingOfDojo : false,
+			selectorEngine:'lite',
+			parseOnLoad:true
+		};
+	</script>
+
+
+<!-- DOJO AMD Loadedr -->
+<script type="text/javascript" src="../dojo/dojo.js"></script>
+</head>
+<body class="claro">
+
+	<div class="container">
+		
+		<div class="page-header">dojo-custom-widgets</div>
+		
+		<div id="counterBox">
+			<div id="c1" data-dojo-type="app.counter.HitCounter" 
+			             data-dojo-props="count:100">
+			</div>
+			<div id="c2" data-dojo-type="app.counter.HitCounter"></div>
+		</div>
+		
+		
+		<button id="b1">Get Count of FirstCounter</button>
+		
+	</div>
+
+	
+	
+	<script type="text/javascript">
+	
+	require(['app/counter/HitCounter',
+	         'dojo/dom',
+	         'dojo/parser',
+	         'dijit/registry',
+	         "dojo/on",
+	         "dojo/domReady!"],
+		
+	    function(HitCounter,dom,parser,registry,on){
+		
+		//var c=new HitCounter({count:100});
+		//c.placeAt(dom.byId('counterBox'));
+		
+		//setTimeout(function(){
+		//	c.set('count',200);
+		//},5000);
+		
+		//setTimeout(function(){
+		//	console.log(c.get('count'));
+		//},10000);
+		
+		//parser.parse();
+		
+		on(dom.byId('b1'),"click",function(){
+			var count=registry.byId('c1').get("count");
+			console.log(count);
+		});
+		
+	});
+	
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

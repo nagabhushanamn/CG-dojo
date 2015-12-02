@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="claro">
+
+	<div class="container">
+		<div class="page-header">
+		dojo-AMD-modules
+		</div>
+		
+		<span class="badge">See console</span>
+		
+	</div>
+
+
+	<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true, 
+			packages : [ {name:'dojo',location:'../dojo'},
+			             {name:'dijit',location:'../dijit'},
+			             {name:'app',location:'app'} 
+			             ],
+			tlmSiblingOfDojo : false,
+			selectorEngine:'lite'
+		};
+	</script>
+
+
+	<!-- DOJO AMD Loadedr -->
+	<script type="text/javascript" src="../dojo/dojo.js"></script>
+	
+	
+	<script type="text/javascript">
+	
+	require(['app/value-module',
+	         'app/return-module',
+	         'app/Person'],
+		
+	    function(value,m,Person){
+		
+		//console.log(value);
+		//console.log(m);
+		//m();
+		
+		
+		var p1=new Person();
+		p1.name='Nag';
+		
+		var p2=new Person();
+		p2.name='Riya';
+		
+		p1.sayName();
+		p2.sayName();
+		
+	});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

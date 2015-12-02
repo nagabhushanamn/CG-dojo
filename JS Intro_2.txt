@@ -1,0 +1,128 @@
+
+
+
+     HTML+CSS                          Javascript
+	 
+	 
+	 
+	 What JS can do on HTML page ?
+	 
+	 --> can create/retreive/update/delete HTML elements.
+	 --> can change style of HTML elements
+	 --> can change HTML element's attributes values.
+	 --> can change Text content HTML elements.
+	 
+	 --> can create Rich UI compoenets.
+	 
+	 --> can validate Form fields before we submit.
+	 --> can rean/write cookies
+	 
+	 --> can communicate with server asycn.
+	     update results in existing page   ( XHR API )
+		 
+	 --> Can bring all HTML-5 API functionality to web-page.
+
+	 
+		 
+		How JS can manupulate HTML page ?
+
+        JS  uses DOM API to manipulate HTML pages
+
+
+		JS  +    DOM API   +    HTML		==> interactive HTML page
+		 
+		 
+		---------------------------------------------------------- 
+		 
+		 after page loads int browser 
+		 
+		    create 'DOM' structure
+			
+			document
+			     
+		 
+		 
+		--------------------------------------------------------
+
+        Limitations of Plain-JS in Browser Envi?
+
+		 
+
+         --> Browser compatibility
+		 --> Too much code for simple oprns.
+		 --> Memory & performance issues.
+		 --> code oraganization.
+		 
+		 etc...
+		 
+		 
+       ----------------------------------------------------------
+	   
+	   
+	   JS Libaries and F.Ws
+	   
+	   1. jQuery
+	   
+	           
+       High-level JS F.Ws   ( MVC , MVVM )
+	   
+	   
+	   2. Backbone JS
+	   3. Angular
+	   4. Knockout
+	   5. Ember JS
+	   
+	   Toolkit
+	   
+	   6. DOJO    ( DOJO community )
+	   
+	   
+	   7. Ext JS   ( commericial )
+	   
+	   
+	   8. YUI
+	   
+	   etc............
+	   ----------------------------------------
+	   
+	   
+	   Module Design Pattern
+	   ---------------------
+	   
+	   http:///github.com/nagabhushanamn/cg-dojo
+	   
+	   
+	   
+	   
+	   
+	   
+
+
+
+	   
+	   w
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+
+
+
+
+
+		
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 

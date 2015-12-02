@@ -1,0 +1,38 @@
+
+
+
+   AMD ( Asyc Module Definition )
+   ---------------------------------
+   
+      standard/spec/API to define modules and Load modules effectively in
+	  browser envi.
+	  
+	  adv.
+	  
+	  --> can avoid globals
+	  --> dependecy resolution.  
+	  --> can load many modules asychrnously 
+   
+     -----------
+	 
+	 create/define new module
+	 ------------------------
+	 
+	 define('moduleName',[dependencies],factory);
+	 
+	 require/load modules
+	 ------------------------
+	 
+	 require(loaderConfig,[MID(s)],callback);
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+   

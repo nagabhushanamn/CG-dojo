@@ -1,0 +1,134 @@
+
+
+
+   JS : 
+   -----------
+   
+     --> scripting lang for Web-pages in browser envi
+	 
+	 +
+	 
+	 --> server-side programming  ( Node JS )
+	 --> command line tools  ( Testing Tools , Build-tools )
+	 --> Application extensions.
+	 --> To write Test-cases.
+	 --> Desktop appln
+	 --> Mobile Appln
+	 
+	 -------------------------------------------------------
+	 
+	 
+	 JS is impln of ECMAScript spec.
+	 
+	 latest version : ES-6
+	 
+	 
+	 -------------------------------------------------------
+	 
+	 JS Engine
+	 
+	      e,g  v8  in chrome browser  + NodeJS
+              		  
+	 -----------------------------------------------------
+	 
+	 JS 
+	 
+	    --> functional programming lang.
+		--> OO programming lang.
+		
+		--> dynamic/loosly types lang.
+		
+		--> No Class
+		--> Functions are ojects.
+		--> prototype based inheritance.
+		
+		--> it supports closures.
+	 
+	 ---------------------------------------------------
+	 
+	 
+	 JS : DataTypes/DataStructures - Variables
+	 ----------------------------------------
+	 
+	 types
+	 
+	 a. simple/primitives types
+	 
+	     string
+		 number
+		 boolean
+		 null
+		 undefined
+	 
+	 b. complex/Reference types
+	 
+	 
+	    objects
+		
+		person
+		name:'Naga';
+		address:'Chennai'
+		
+		How to create JS Object ?
+		
+		
+		syntax
+		
+		new ConstructorFunction(); 
+		
+		
+		
+		----------------------------------------
+		
+		function invocation patterns
+		
+		1. function invocation      --> this  : GLOBAL
+		2. method invocation        --> this  : obj -> obj.func() 
+		3. binding invocation       --> this  : obj -> call(obj) | apply(obj) | bind(obj)
+		4. constructor invocation   --> this  : New Object
+		
+	   ----------------------------------------------
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+		
+		
+		
+		
+		
+		
+		
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 

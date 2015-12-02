@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="claro">
+
+	<div class="container">
+		<div class="page-header">dojo-Promise</div>
+
+		<span class="badge">See console</span>
+
+	</div>
+
+
+	<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true,
+			packages : [ {
+				name : 'dojo',
+				location : '../dojo'
+			}, {
+				name : 'dijit',
+				location : '../dijit'
+			}, {
+				name : 'app',
+				location : 'app'
+			} ],
+			tlmSiblingOfDojo : false,
+			selectorEngine : 'lite'
+		};
+	</script>
+
+
+	<!-- DOJO AMD Loadedr -->
+	<script type="text/javascript" src="../dojo/dojo.js"></script>
+
+
+	<script type="text/javascript">
+		
+		require([ 'dojo/Deferred',"dojo/promise/all","dojo/promise/first" ],
+			
+			function(Deferred,all,first) {
+
+			
+			
+			console.log("-----------------------------------------");
+			
+			
+			function getPizaa(){
+				var def = new Deferred();
+				setTimeout(function(){
+				def.resolve("PIZAA");	
+				},500)
+				return def;
+			}
+			
+			function getKFC(){
+				var def = new Deferred();
+				setTimeout(function(){
+					def.resolve("KFC");	
+				},2000)
+				return def;
+			}
+			
+			
+			
+			first([getPizaa(),getKFC()])
+			.then(function(items){
+				console.log('Yummy party-'+items);
+			},
+			function(error){
+				console.log('oops');
+			});
+			
+			
+			
+			
+			
+
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

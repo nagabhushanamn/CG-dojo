@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<button id="btn">Teach DOJO</button>
+
+<script type="text/javascript">
+
+var btn=document.getElementById('btn');
+
+
+var tnr={
+		tnrName:'Nag',
+		doTeach:function(){
+			console.log(this.tnrName+" Teaching DOJO");
+		}
+};
+
+btn.addEventListener('click',tnr.doTeach.bind(tnr));
+
+</script>
+
+</body>
+</html>
