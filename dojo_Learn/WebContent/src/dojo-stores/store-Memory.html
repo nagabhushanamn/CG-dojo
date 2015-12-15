@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="claro">
+
+	<div class="container">
+		<div class="page-header">dojo- data-stores</div>
+
+		<span class="badge">See console</span>
+
+	</div>
+
+
+	<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true,
+			packages : [ {
+				name : 'dojo',
+				location : '../dojo'
+			}, {
+				name : 'dijit',
+				location : '../dijit'
+			}, {
+				name : 'app',
+				location : 'app'
+			} ],
+			tlmSiblingOfDojo : false,
+			selectorEngine : 'lite'
+		};
+	</script>
+
+
+	<!-- DOJO AMD Loadedr -->
+	<script type="text/javascript" src="../dojo/dojo.js"></script>
+
+
+	<script type="text/javascript">
+		require([ 'dojo/store/Memory' ], function(Memory) {
+			
+			var items=[
+			          {id:1,name:'Laptop',price:2000},
+			          {id:2,name:'Mobile',price:4000},
+			          {id:3,name:'Laptop',price:5000},
+			          {id:4,name:'Mobile',price:3000}
+			          ];
+			
+			var store=new Memory({data:items});
+			
+			
+			// store API
+			
+			//a. Finding by Id
+			
+			//var product=store.get(3);
+			//console.log(product);
+			
+			
+			// b. query by any condition
+			
+			/* store.query(function(item){
+				return item.price>2000;
+			})
+			.forEach(function(item){
+				console.log(item);
+			}); */
+			
+			// c. Add New Product
+			
+			//var newProd={id:5,name:'New product',price:6000};
+			//store.add(newProd);
+			
+			//var product=store.get(5);
+			//console.log(product);
+			
+			
+			// d. update and delete product
+			
+			/* var product=store.get(1);
+			product.price=100;
+			store.put(product);
+
+			store.remove(2);
+			
+			store.query()
+			.forEach(function(item){
+				console.log(item);
+			}); 
+			 */
+			
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

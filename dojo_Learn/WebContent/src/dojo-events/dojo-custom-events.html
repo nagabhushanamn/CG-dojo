@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<script type="text/javascript">
+	var dojoConfig = {
+		async : true,
+		baseUrl : '.',
+		isDebug : true,
+		packages : [ {
+			name : 'dojo',
+			location : '../dojo'
+		}, {
+			name : 'dijit',
+			location : '../dijit'
+		}, {
+			name : 'app',
+			location : 'app'
+		} ],
+		tlmSiblingOfDojo : false,
+		selectorEngine : 'lite',
+		parseOnLoad : true
+	};
+</script>
+
+
+<!-- DOJO AMD Loadedr -->
+<script type="text/javascript" src="../dojo/dojo.js"></script>
+
+</head>
+<body class="claro">
+
+
+
+	<div class="container">
+
+		<div class="page-header">dojo-Event Handling ( Custom-Events )</div>
+
+		<span class="badge">See console</span>
+
+
+	</div>
+
+
+	<script type="text/javascript">
+	
+		require(['dojo/_base/declare','dojo/Evented','dojo/on'], function(declare,Evented,on) {
+
+			var Door=declare([Evented],{
+				open:function(){
+					console.log('dooor opened...');
+					this.emit('door-open');
+				},
+				close:function(){
+					console.log('door closed');
+					this.emit('door-close');
+				}
+			});		
+			
+			var door=new Door();
+			
+			var Light=declare([],{
+				doWork:function(){
+					
+					on(door,'door-open',function(){
+						console.log('LIGHT ON');
+					});
+					on(door,'door-close',function(){
+						console.log('LIGHT OFF');
+					});
+					
+				}
+			});
+			
+			
+			var AC=declare([],{
+				doWork:function(){
+					
+					on(door,'door-open',function(){
+						console.log('AC ON');
+					});
+					on(door,'door-close',function(){
+						console.log('AC OFF');
+					});
+					
+					
+				}
+			});
+			
+			
+			var light=new Light();
+			var ac=new AC();
+			
+			light.doWork();
+			ac.doWork();
+			
+			
+			
+			setTimeout(function(){
+				door.open();
+			},5000);
+			
+
+			setTimeout(function(){
+				door.close();
+			},10000);
+
+
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

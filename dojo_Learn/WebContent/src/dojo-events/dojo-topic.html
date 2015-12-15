@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<script type="text/javascript">
+	var dojoConfig = {
+		async : true,
+		baseUrl : '.',
+		isDebug : true,
+		packages : [ {
+			name : 'dojo',
+			location : '../dojo'
+		}, {
+			name : 'dijit',
+			location : '../dijit'
+		}, {
+			name : 'app',
+			location : 'app'
+		} ],
+		tlmSiblingOfDojo : false,
+		selectorEngine : 'lite',
+		parseOnLoad : true
+	};
+</script>
+
+
+<!-- DOJO AMD Loadedr -->
+<script type="text/javascript" src="../dojo/dojo.js"></script>
+
+</head>
+<body class="claro">
+
+
+
+	<div class="container">
+
+		<div class="page-header">dojo-Event Handling ( dojo/topic )</div>
+
+		<span class="badge">See console</span>
+
+
+	</div>
+
+
+	<script type="text/javascript">
+		
+		require([ 'dojo/topic' ], function(topic) {
+
+			// Academy  ( publisher )
+
+			setTimeout(function() {
+				console.log('publishing tng-topic');
+				topic.publish('tng-topic', {
+					course : 'DOJO',
+					duration : 4
+				});
+			}, 5000);
+			
+
+			setTimeout(function() {
+				console.log('publishing tng-topic');
+				topic.publish('tng-topic', {course : 'DOJO',duration : 4},"naga");
+			}, 7000);
+
+			// Trainer  ( subscriber )
+
+			topic.subscribe('tng-topic', function(data) {
+				console.log('Trainer notified...');
+				console.log('data-'+data.course + " " + data.duration);
+			});
+
+			// Employee ( subscriber )
+
+			var handle=topic.subscribe('tng-topic', function(data) {
+				console.log('Employee notified...');
+				console.log('data-'+data.course + " " + data.duration);
+				handle.remove();
+			});
+
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

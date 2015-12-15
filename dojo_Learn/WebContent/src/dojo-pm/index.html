@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link rel="stylesheet" type="text/css" href="../dijit/themes/dijit.css">
+<link rel="stylesheet" type="text/css" href="../dijit/themes/claro/claro.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+
+</head>
+
+<body class="claro">
+
+<div id="BorderContainer" 
+     style="height: 500px; width: 800px" 
+     data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline'">
+
+	<div data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region:'top'">
+		dojo-Product Management
+	</div>
+	
+	<div data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region:'left'" style="width: 50px" >
+		
+	</div>
+	
+	<div data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region:'center'">
+		
+		<div id="productsBox">
+			
+		</div>
+		
+	</div>
+	
+	
+	
+</div>
+
+		<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true, 
+			packages : [ {name:'dojo',location:'../dojo'},
+			             {name:'dijit',location:'../dijit'},
+			             {name:'app',location:'app'} 
+			             ],
+			tlmSiblingOfDojo : false,
+			selectorEngine:'lite',
+			parseOnLoad:true
+		};
+	</script>
+
+
+	<!-- DOJO AMD Loadedr -->
+	<script type="text/javascript" src="../dojo/dojo.js"></script>
+	
+	
+
+	<script type="text/javascript">
+		require([
+				 "dojo/request",
+				 "dojo/dom",
+				 "app/product/ProductWidget",
+		         'dijit/layout/BorderContainer',
+		         'dijit/layout/ContentPane',
+		         'dojo/domReady!'],
+		         function(request,dom,ProductWidget){
+			
+					var url="products.json";
+					var container=dom.byId('productsBox');
+					request.get(url,{handleAs:'json'})
+					.then(function(products){
+						
+						products.forEach(function(product){
+							new ProductWidget(product).placeAt(container);
+						});
+						
+					});
+					
+			
+		         });
+	</script>
+	
+
+
+</body>
+</html>

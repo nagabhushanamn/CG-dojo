@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true, 
+			packages : [ {name:'dojo',location:'../dojo'},
+			             {name:'dijit',location:'../dijit'},
+			             {name:'app',location:'app'} 
+			             ],
+			tlmSiblingOfDojo : false,
+			selectorEngine:'lite',
+			parseOnLoad:true
+		};
+	</script>
+
+
+<!-- DOJO AMD Loadedr -->
+<script type="text/javascript" src="../dojo/dojo.js"></script>
+
+</head>
+<body class="claro">
+
+
+
+	<div class="container">
+		
+		<div class="page-header">dojo-Event Handling</div>
+		
+		<button id="b1">b1</button>
+		<button id="b2">b2-once</button>
+		
+		<hr/>
+		
+		<div id="p" class="jumbotron">
+			<button id="b3">b3</button>
+		</div>
+		
+		<hr/>
+		
+		<button id="b4" class="odd">Odd</button>
+		<button id="b5" class="even">Even</button>
+		<button id="b6" class="odd">Odd</button>
+		<button id="b7" class="even">Even</button>
+		<button id="b8" class="odd">Odd</button>
+		
+		<hr/>
+		
+		<div id='box'>
+			<button class="b" id="b9">b9</button>
+			<button class="b" id="b10">b10</button>
+		</div>
+		
+		
+	</div>
+
+	
+	<script type="text/javascript">
+	
+	require(['dojo/on','dojo/dom','dojo/query','dojo/domReady!'],function(on,dom,query){
+		
+		on(dom.byId('b1'),"click,dblclick",function(event){
+			console.log('b1- click handler');
+			console.log(event.type);
+		});
+		var handle=on(dom.byId('b2'),"click",function(event){
+			console.log('b2- click handler - once');
+			handle.remove();
+		});
+		
+		//-------------------------------------------------------
+		
+		on(dom.byId('p'),"click",function(event){
+			console.log('<div> click handler');
+		});
+		on(dom.byId('b3'),"click",function(event){
+			console.log('#b3 - click handler');
+			event.stopPropagation();
+		});
+
+		//---------------------------------------------------------
+		query('.odd').on('click',function(event){
+			console.log('ODD-button clicked...'+event.target.id);
+			
+		});
+		query('.even').on('click',function(event){
+			console.log('Even-button clicked...'+event.target.id);
+			
+		});
+		
+		//--------------------------------------------------------------
+		
+		
+		on(dom.byId("box"),".b:click",function(event){
+			console.log('click-event-on '+event.target.id);
+		});
+
+		//--------------------------------------------------------------
+		
+		
+		
+	});
+	
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

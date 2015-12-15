@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<script type="text/javascript">
+	var dojoConfig = {
+		async : true,
+		baseUrl : '.',
+		isDebug : true,
+		packages : [ {
+			name : 'dojo',
+			location : '../dojo'
+		}, {
+			name : 'dijit',
+			location : '../dijit'
+		}, {
+			name : 'app',
+			location : 'app'
+		} ],
+		tlmSiblingOfDojo : false,
+		selectorEngine : 'lite',
+		parseOnLoad : true
+	};
+</script>
+
+
+<!-- DOJO AMD Loadedr -->
+<script type="text/javascript" src="../dojo/dojo.js"></script>
+
+</head>
+<body class="claro">
+
+
+
+	<div class="container">
+
+		<div class="page-header">dojo-Event Handling ( dojo/aop )</div>
+
+		<span class="badge">See console</span>
+
+
+	</div>
+
+
+	<script type="text/javascript">
+		require([ 'dojo/aspect' ], function(aspect) {
+
+			var obj = {
+				getRandom : function(min, max) {
+					console.log("Min-" + min + ",Max-" + max);
+					return Math.floor(Math.random() * 10);
+				}
+			};
+
+			// Before Advice
+			/* aspect.before(obj, 'getRandom', function(min, max) {
+				console.log('before-advice');
+				console.log('original inputs :' + min + " " + max);
+				return [min-1,max-1];
+			}); */
+			
+			// After Advice
+			/* aspect.after(obj, 'getRandom', function(originalResult) {
+				console.log('After-advice');
+				console.log('original result :' + originalResult);
+				return originalResult-1;
+			}); */
+
+			
+			//Around Advice
+			aspect.around(obj,'getRandom',function(originalFunc){
+				
+				return function(min,max){
+					
+					if(min===max){
+						console.log('before : Not calling original func..');
+						return min;
+					}else{
+						var result=originalFunc(min,max);
+						console.log('After : result:-'+result)
+						return result;
+					}
+					
+				}
+				
+			});
+			
+			console.log(obj.getRandom(5, 5));
+
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

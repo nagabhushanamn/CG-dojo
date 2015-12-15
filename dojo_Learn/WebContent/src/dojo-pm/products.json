@@ -1,0 +1,31 @@
+[
+	{
+		"name": "Laptop",
+		"price": 120000,
+		"description": "New Model",
+		"canBuy": true,
+		"notAvailable": false,
+		"images": 
+		[
+			{
+				"thumb": "images/Laptop.png",
+				"full": ""
+			}
+		]
+	},
+
+	{
+		"name": "Mobile",
+		"price": 20000,
+		"description": "New Model",
+		"canBuy": true,
+		"notAvailable": false,
+		"images": 
+		[
+			{
+				"thumb": "images/Mobile.png",
+				"full": ""
+			}
+		]
+	}
+]

@@ -10,7 +10,7 @@ define(['dojo/_base/declare',
 		'dojo/on',
 		'dojo/_base/lang',
 		'dojo/text!./template/HitCounter.html',
-		'app/HelloDialog',
+		'app/dialog/HelloDialog',
 		'dojo/dom-attr'],
 
 function(declare,

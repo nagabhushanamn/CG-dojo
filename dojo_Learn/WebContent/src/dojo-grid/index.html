@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="claro">
+
+	<div class="container">
+		<div class="page-header">dojo - dgrid</div>
+
+		<div id="container"></div>
+
+	</div>
+
+
+	<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true,
+			packages : [ {
+				name : 'dojo',
+				location : '../dojo'
+			}, {
+				name : 'dijit',
+				location : '../dijit'
+			}{
+				name : 'dgrid',
+				location : '../dgrid'
+			},
+			{
+				name : 'put-selector',
+				location : '../put-selector'
+			},{
+				name : 'xstyle',
+				location : '../xstyle'
+			}
+			, {
+				name : 'app',
+				location : 'app'
+			} ],
+			tlmSiblingOfDojo : false,
+			selectorEngine : 'lite'
+		};
+	</script>
+
+
+	<!-- DOJO AMD Loadedr -->
+	<script type="text/javascript" src="../dojo/dojo.js"></script>
+
+
+	<script type="text/javascript">
+		
+	
+	require(
+			[ 'dojo/_base/declare',
+			  'dgrid/Grid',
+			  'dgrid/Selection',
+			  'dgrid/Keyboard',
+			  'dgrid/extensions/Pagination',
+			  'dojo/domReady!' ],
+
+			function(declare, Grid, Selection, Keyboard, Pagination) {
+				
+				var items=[
+					          {id:1,name:'Laptop',price:2000},
+					          {id:2,name:'Mobile',price:4000},
+					          {id:3,name:'Laptop',price:5000},
+					          {id:4,name:'Mobile',price:3000}
+					          ];
+				
+				var cols = {
+						id : 'FirstName',
+						Name : 'LastName',
+						Price : 'Age'
+					};
+				
+				
+				//var grid=new Grid({columns:cols},'c2');
+				var CustomGrid = declare([ Grid, Selection, Keyboard,Pagination ], {});
+				
+				var grid = new CustomGrid({
+					columns : cols,
+					selectionMode : 'single',
+					cellNavigation : true,
+					pageSizeOptions : [ 5, 10, 15 ],
+					firstLastArrows:true,
+					pagingTextBox:true,
+					pagingLinks:1
+				}, 'container');
+				
+				grid.renderArray(items);
+				
+			});
+			
+	
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>dojo</title>
+<link href="../dijit/themes/claro/claro.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="claro">
+
+	<div class="container">
+		<div class="page-header">dojo- data-stores</div>
+
+		<span class="badge">See console</span>
+
+	</div>
+
+
+	<script type="text/javascript">
+		var dojoConfig = {
+			async : true,
+			baseUrl : '.',
+			isDebug : true,
+			packages : [ {
+				name : 'dojo',
+				location : '../dojo'
+			}, {
+				name : 'dijit',
+				location : '../dijit'
+			}, {
+				name : 'app',
+				location : 'app'
+			} ],
+			tlmSiblingOfDojo : false,
+			selectorEngine : 'lite'
+		};
+	</script>
+
+
+	<!-- DOJO AMD Loadedr -->
+	<script type="text/javascript" src="../dojo/dojo.js"></script>
+
+
+	<script type="text/javascript">
+		require([ 'dojo/store/JsonRest' ], function(JsonRest) {
+			
+			var url="http://localhost:3000/api/products"
+			var store=new JsonRest({target:url});
+			
+			// store API
+			/* store.get(1)
+			.then(function(result){
+				console.log(result);
+			},function(error){
+				console.log(error);
+			}); */
+			
+			//var newProd={name: "New Mobile", price: 2000, isAvailable: true, desc: "Bla bla"}
+			//store.add(newProd)
+			
+			store.query()
+			.then(function(products){
+				products.forEach(function(items){
+					console.log(items);
+				});
+			}); 
+			
+			//store.remove(3);
+			
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
